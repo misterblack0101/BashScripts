@@ -1,17 +1,18 @@
 #!/usr/bin/bash
 
 echo
-read -p "Do you want to  install MSI fan Systems? y/n:  " ans
+read -p "Do you want to configure git username and email? y/n:  " ans
 if [ $ans = "y" ] || [ $ans = "Y" ]; 
 then
-echo "True condition"
-flag=0
-else
-echo "false condition"
-flag=1
+read -p "Enter your username: " name
+echo
+read -p "Enter your email: " email
+echo
+echo "You can always change it by typing:"
+echo "git config --global user.email <email_id> "
+echo "git config --global user.name <name> "
+echo
+echo "All done!"
 fi
 
-if [ $flag -eq 0 ];
-then
-echo "Turn fan off manually"
-fi
+

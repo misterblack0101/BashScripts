@@ -30,13 +30,25 @@ echo "Installing git now..."
 echo
 sudo apt-get install git
 echo
-echo "Setting up git global name and email"
-git config --global user.email harshmarooo123@gmail.com 
-git config --global user.name Harsh 
+read -p "Do you want to configure git username and email? y/n:  " ans
+if [ $ans = "y" ] || [ $ans = "Y" ]; 
+then
+read -p "Enter your username: " name
+echo
+read -p "Enter your email: " email
+echo
+git config --global user.email $email 
+git config --global user.name $name 
 git config --list
 echo
-echo "Git configured successfully!!"
+echo "You can always change it by typing:"
+echo "git config --global user.email <email_id> "
+echo "git config --global user.name <name> "
 echo
+echo "All done!"
+fi
+echo
+echo "Git configured successfully!!"
 echo "-------------------------------------------------------------------------"
 echo
 
