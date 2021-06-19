@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 echo
 read -p "Do you want to configure git username and email? y/n:  " ans

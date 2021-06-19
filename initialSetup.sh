@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 #Script by misterblack0101 to install basic apps and setup for
 # MSI MODERN 14 on a 
