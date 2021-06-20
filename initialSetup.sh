@@ -163,7 +163,6 @@ sudo add-apt-repository multiverse
 sudo apt-get update && sudo apt-get install ttf-mscorefonts-installer
 sudo apt-get install ubuntu-restricted-extras
 echo "MS-TTCore fonts and multimedia codecs installed successfully!!"
-echo
 echo "-------------------------------------------------------------------------"
 echo
 
@@ -172,6 +171,24 @@ then
 sudo isw -b off
 fi
 
+#Torrent
+echo "Installing qbittorrent now"
+echo
+sudo apt-get install qbittorrent
+echo "QBITTORRENT installed successfully!!"
+echo "-------------------------------------------------------------------------"
+echo
+
+#Joplin
+echo "Installing Joplin now"
+echo
+wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
+echo "Joplin installed successfully!!"
+echo "-------------------------------------------------------------------------"
+echo
+
+
 echo "Install discord manually"
 echo
 echo "Script has ended. Enjoy the setup!"
+
