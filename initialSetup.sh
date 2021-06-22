@@ -8,7 +8,7 @@ cd ~
 
 #UPDATE && UPGRADE
 echo "Inintializing script!!"
-sudo apt-get update 
+sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get install wget -y
 echo
@@ -78,7 +78,7 @@ echo "Installing jdk16 for java, python and c/c++ build essemtials now"
 echo
 sudo apt-get install openjdk-16-jre-headless -y 
 sudo apt-get install openjdk-16-jdk-headless -y 
-sudo apt install python3.9 -y
+#sudo apt install python3.9 -y
 sudo apt-get install build-essential -y
 echo "Compilers installed successfully!!"
 echo
@@ -89,7 +89,7 @@ echo
 echo "Installing VSCode now"
 echo
 wget -O vscode.deb 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64'
-sudo apt install ./vscode
+sudo dpkg -i vscode.deb
 sudo rm vscode.deb
 echo "VScode installed successfully!!"
 echo
@@ -108,15 +108,6 @@ echo
 echo "-------------------------------------------------------------------------"
 echo
 
-#CHROMIUM browser
-#echo "Installing Chromium now"
-#echo
-#sudo apt-get install chromium-browser
-#echo "Chromium Browser installed successfully!!"
-#echo
-#echo "-------------------------------------------------------------------------"
-#echo
-
 #MEDIA PLAYERS
 echo "Installing VLC and MPV now"
 echo
@@ -124,37 +115,6 @@ sudo apt-get install vlc -y
 sudo apt-get install mpv -y
 echo "Media Players installed successfully!!"
 echo
-echo "-------------------------------------------------------------------------"
-echo
-
-#ISW for fans
-echo
-read -p "Do you want to  install MSI fan Systems? y/n:  " ans
-if [ $ans = "y" ] || [ $ans = "Y" ]; 
-then
-#----------------
-flag=0
-echo "Installing ISW for fans now"
-echo
-git clone https://github.com/YoyPa/isw
-cd isw
-install -Dm 644 etc/isw.conf "${pkgdir}/etc/isw.conf"
-install -Dm 644 etc/modprobe.d/isw-ec_sys.conf "${pkgdir}/etc/modprobe.d/isw-ec_sys.conf"
-install -Dm 644 etc/modules-load.d/isw-ec_sys.conf "${pkgdir}/etc/modules-load.d/isw-ec_sys.conf"
-install -Dm 644 usr/lib/systemd/system/isw@.service "${pkgdir}/usr/lib/systemd/system/isw@.service"
-install -Dm 755 isw "${pkgdir}/usr/bin/isw"
-cd ~
-sudo rm -rf isw
-modprobe ec_sys write_support=1
-echo
-echo "Fans will now start, and turn off after the next task finishes"
-sudo isw -b on
-echo
-#---------------
-else
-echo "Not installing ISW fans, moving ahead"
-flag=1
-fi
 echo "-------------------------------------------------------------------------"
 echo
 
@@ -167,11 +127,6 @@ sudo apt-get install ubuntu-restricted-extras -y
 echo "MS-TTCore fonts and multimedia codecs installed successfully!!"
 echo "-------------------------------------------------------------------------"
 echo
-
-if [ $flag -eq 0 ];
-then
-sudo isw -b off
-fi
 
 #Torrent
 echo "Installing qbittorrent now"
