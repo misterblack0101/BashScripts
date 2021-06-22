@@ -8,9 +8,9 @@ cd ~
 
 #UPDATE && UPGRADE
 echo "Inintializing script!!"
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install wget
+sudo apt-get update 
+sudo apt-get upgrade -y
+sudo apt-get install wget -y
 echo
 echo "-------------------------------------------------------------------------"
 echo
@@ -18,7 +18,7 @@ echo
 # GPARTED
 echo "Installing gparted now:"
 echo
-sudo apt-get install gparted
+sudo apt-get install gparted -y
 echo
 echo "Gparted Installed successfullly!!"
 echo
@@ -28,7 +28,8 @@ echo
 #GITHUB
 echo "Installing git now..."
 echo
-sudo apt-get install git
+sudo apt-get install git -y
+echo
 echo
 read -p "Do you want to configure git username and email? y/n:  " ans
 if [ $ans = "y" ] || [ $ans = "Y" ]; 
@@ -55,7 +56,7 @@ echo
 #HTOP
 echo "Installing htop now"
 echo
-sudo apt-get install htop
+sudo apt-get install htop -y
 echo "Htop installed successfully!!"
 echo
 echo "-------------------------------------------------------------------------"
@@ -64,7 +65,7 @@ echo
 #TLP
 echo "Installing TLP now"
 echo
-sudo apt-get install tlp
+sudo apt-get install tlp -y
 sudo systemctl enable tlp.service
 sudo systemctl start tlp.service
 echo "TLP installed and setup successfully!!"
@@ -75,9 +76,10 @@ echo
 #JAVA, PYTHON, C, C++
 echo "Installing jdk16 for java, python and c/c++ build essemtials now"
 echo
-sudo apt-get install openjdk-16-jre-headless 
-sudo apt-get install openjdk-16-jre-headless 
-sudo apt-get install build-essential
+sudo apt-get install openjdk-16-jre-headless -y 
+sudo apt-get install openjdk-16-jdk-headless -y 
+sudo apt install python3.9 -y
+sudo apt-get install build-essential -y
 echo "Compilers installed successfully!!"
 echo
 echo "-------------------------------------------------------------------------"
@@ -118,8 +120,8 @@ echo
 #MEDIA PLAYERS
 echo "Installing VLC and MPV now"
 echo
-sudo apt-get install vlc
-sudo apt-get install mpv
+sudo apt-get install vlc -y
+sudo apt-get install mpv -y
 echo "Media Players installed successfully!!"
 echo
 echo "-------------------------------------------------------------------------"
@@ -159,9 +161,9 @@ echo
 #Fonts and codecs
 echo "Installing fonts and codecs now"
 echo
-sudo add-apt-repository multiverse
-sudo apt-get update && sudo apt-get install ttf-mscorefonts-installer
-sudo apt-get install ubuntu-restricted-extras
+sudo add-apt-repository multiverse -y
+sudo apt-get update && sudo apt-get install ttf-mscorefonts-installer -y
+sudo apt-get install ubuntu-restricted-extras -y
 echo "MS-TTCore fonts and multimedia codecs installed successfully!!"
 echo "-------------------------------------------------------------------------"
 echo
@@ -174,19 +176,10 @@ fi
 #Torrent
 echo "Installing qbittorrent now"
 echo
-sudo apt-get install qbittorrent
+sudo apt-get install qbittorrent -y
 echo "QBITTORRENT installed successfully!!"
 echo "-------------------------------------------------------------------------"
 echo
-
-#Joplin
-echo "Installing Joplin now"
-echo
-wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
-echo "Joplin installed successfully!!"
-echo "-------------------------------------------------------------------------"
-echo
-
 
 echo "Install discord manually"
 echo
