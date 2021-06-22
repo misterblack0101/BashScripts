@@ -15,14 +15,12 @@ echo "Installing ISW for fans now"
 echo
 git clone https://github.com/YoyPa/isw
 cd isw
-install -Dm 644 etc/isw.conf "${pkgdir}/etc/isw.conf"
-install -Dm 644 etc/modprobe.d/isw-ec_sys.conf "${pkgdir}/etc/modprobe.d/isw-ec_sys.conf"
-install -Dm 644 etc/modules-load.d/isw-ec_sys.conf "${pkgdir}/etc/modules-load.d/isw-ec_sys.conf"
-install -Dm 644 usr/lib/systemd/system/isw@.service "${pkgdir}/usr/lib/systemd/system/isw@.service"
-install -Dm 755 isw "${pkgdir}/usr/bin/isw"
-cd ~
-sudo rm -rf isw
-modprobe ec_sys write_support=1
+sudo modprobe ec_sys write_support=1
+sudo install -Dm 644 etc/isw.conf "${pkgdir}/etc/isw.conf"
+sudo install -Dm 644 etc/modprobe.d/isw-ec_sys.conf "${pkgdir}/etc/modprobe.d/isw-ec_sys.conf"
+sudo install -Dm 644 etc/modules-load.d/isw-ec_sys.conf "${pkgdir}/etc/modules-load.d/isw-ec_sys.conf"
+sudo install -Dm 644 usr/lib/systemd/system/isw@.service "${pkgdir}/usr/lib/systemd/system/isw@.service"
+sudo install -Dm 755 isw "${pkgdir}/usr/bin/isw"
 echo
 echo "Fans will now start, and turn off after 15 secs..."
 sudo isw -b on
@@ -43,4 +41,7 @@ if [ $flag -eq 0 ];
 then
 sudo isw -b off
 fi
+
+cd ~
+sudo rm -rf isw
 
