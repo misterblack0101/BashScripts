@@ -1,18 +1,19 @@
-#!/usr/bin/env bash
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo "This is for bash shell only. For any other shell, please set aliases manually."
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
-echo
-read -p "Do you want to configure git username and email? y/n:  " ans
+read -p "Do you want to set alias for controlling your fans? y/n:  " ans
 if [ $ans = "y" ] || [ $ans = "Y" ]; 
 then
-read -p "Enter your username: " name
+#----------------
+cd
+echo "alias fan=\"sudo isw -b on\"" >> .bashrc
+echo "alias fanoff=\"sudo isw -b off\"" >> .bashrc
 echo
-read -p "Enter your email: " email
-echo
-echo "You can always change it by typing:"
-echo "git config --global user.email <email_id> "
-echo "git config --global user.name <name> "
-echo
-echo "All done!"
+echo "You can turn on/off the fans by using fan and fanoff respectively."
+echo "Restart your shell to see the changes."
+
+#---------------
+else
+echo "Not setting aliases. Have a good day!"
 fi
-
-
