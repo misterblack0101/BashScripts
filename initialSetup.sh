@@ -65,9 +65,15 @@ echo
 #TLP
 echo "Installing TLP now"
 echo
-sudo apt-get install tlp -y
+sudo add-apt-repository ppa:linrunner/tlp
+apt-get update
+sudo apt-get install tlp tlp-rdw -y
+read -p "Do you want to enable tlp, or wait for auto-cpufreq? (Suggested ans is N) y/n:  " ans
+if [ $ans = "y" ] || [ $ans = "Y" ]; 
+then
 sudo systemctl enable tlp.service
 sudo systemctl start tlp.service
+fi
 echo "TLP installed and setup successfully!!"
 echo
 echo "-------------------------------------------------------------------------"
@@ -76,8 +82,8 @@ echo
 #JAVA, PYTHON, C, C++
 echo "Installing jdk16 for java, python and c/c++ build essemtials now"
 echo
-sudo apt-get install openjdk-16-jre-headless -y 
-sudo apt-get install openjdk-16-jdk-headless -y 
+sudo apt-get install openjdk-17-jre-headless -y 
+sudo apt-get install openjdk-17-jdk-headless -y 
 #sudo apt install python3.9 -y
 sudo apt-get install build-essential -y
 echo "Compilers installed successfully!!"
@@ -135,6 +141,25 @@ sudo apt-get install qbittorrent -y
 echo "QBITTORRENT installed successfully!!"
 echo "-------------------------------------------------------------------------"
 echo
+
+#autocpufreq
+echo "Installing auto-cpufreq now"
+echo
+git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+cd auto-cpufreq && sudo ./auto-cpufreq-installer
+sudo auto-cpufreq --install
+echo "autocpu-freq installed successfully!!"
+echo "-------------------------------------------------------------------------"
+read -p "Do you want to enable auto-cpufreq as a system service? y/n:  " ans
+if [ $ans = "y" ] || [ $ans = "Y" ]; 
+then
+sudo systemctl enable auto-cpufreq
+sudo systemctl start auto-cpufreq
+echo
+echo "auto-cpufreq has been anabled!"
+echo "-------------------------------------------------------------------------"
+fi
+
 
 echo "Install discord manually"
 echo
